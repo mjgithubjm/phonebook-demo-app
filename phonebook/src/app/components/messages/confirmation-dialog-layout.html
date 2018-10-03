@@ -1,0 +1,4 @@
+<div class="message-title">{{ message }}</div>
+<button *ngIf="category==='request'" mat-button (click)="onAccept()">Accept</button>
+<button *ngIf="category==='request'" mat-button (click)="onReject()">Reject</button>
+<button *ngIf="category==='warning'" mat-button (click)="onAccept()">Ok</button>

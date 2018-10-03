@@ -6,30 +6,23 @@ import { MatDialog } from '@angular/material/dialog';
 import { MessagesComponent } from '../messages/messages.component';
 
 @Component({
-  selector: 'app-add-contact',
-  templateUrl: './add-contact.component.html',
-  styleUrls: ['./add-contact.component.css']
+	selector: 'app-add-contact',
+	templateUrl: './add-contact.component.html',
+	styleUrls: ['./add-contact.component.css']
 })
 export class AddContactComponent implements OnInit {
-  newContact: Contact = new Contact();
+	newContact: Contact = new Contact();
 
-  constructor(private contactsService: ContactService, private messageService: MessageService, public dialog: MatDialog) { }
+	constructor(private contactsService: ContactService, private messageService: MessageService) { }
 
-  ngOnInit() {
-  }
+	ngOnInit() {
+	}
 
-  addContact() {
-    if(this.newContact.firstName && this.newContact.phoneNumber) this.contactsService.addContact(this.newContact).then(() => {});
-    else {
-      this.messageService.add("Please fill in new name and phone number");
-      const dialogRef = this.dialog.open(MessagesComponent, {
-        width: '250px',
-        data: {name: ""}
-      });
-  
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
-      });
-    }
-  }
+	addContact() {
+		if (this.newContact.firstName && this.newContact.phoneNumber) this.contactsService.addContact(this.newContact).then(() => { });
+		else {
+			this.messageService.add({ message: "Please fill in new name and phone number" , category: "warning"});
+
+		}
+	}
 }

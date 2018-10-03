@@ -16,62 +16,63 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MessageService } from './services/message.service';
 import { ConfirmationService } from './services/confirmation.service';
-import { MessagesComponent } from './components/messages/messages.component';
-import { MatDialogRef, MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
+import { MessagesComponent, ConfirmationDialogLayoutComponent } from './components/messages/messages.component';
+import { MatDialogModule } from '@angular/material';
+import { InputTextComponent } from './components/ui-components/input-text/input-text.component';
 
 const appRoutes: Routes = [
-  {
-    path: 'contact-details/:id',
-    component: ContactDetailsComponent
-  },
-  {
-    path: 'add-contact',
-    component: AddContactComponent
-  },
-  {
-    path: 'edit-contact/:id',
-    component: EditContactComponent
-  },
-  {
-    path: 'all-contacts',
-    component: AllContactsComponent,
-    data: { title: 'Heroes List' }
-  },
-  {
-    path: '',
-    redirectTo: '/all-contacts',
-    pathMatch: 'full'
-  }];
+	{
+		path: 'contact-details/:id',
+		component: ContactDetailsComponent
+	},
+	{
+		path: 'add-contact',
+		component: AddContactComponent
+	},
+	{
+		path: 'edit-contact/:id',
+		component: EditContactComponent
+	},
+	{
+		path: 'all-contacts',
+		component: AllContactsComponent,
+		data: { title: 'Heroes List' }
+	},
+	{
+		path: '',
+		redirectTo: '/all-contacts',
+		pathMatch: 'full'
+	}];
 @NgModule({
-  declarations: [
-    AppComponent,
-    ContactDetailsComponent,
-    AllContactsComponent,
-    EditContactComponent,
-    AddContactComponent,
-    MessagesComponent
-  ],
-  entryComponents: [MessagesComponent],
-  exports: [
-    AppComponent,
-    ContactDetailsComponent,
-    AllContactsComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    RouterModule.forRoot(appRoutes),
-    MatInputModule,
-    MatFormFieldModule,
-    MatButtonModule,
-    HttpClientModule,
-    FontAwesomeModule,
-    MatDialogModule,
-    FormsModule
-  ],
-  providers: [ContactService, MessageService, ConfirmationService, 
-        {provide: MatDialogRef, useValue: {}},
-     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		ContactDetailsComponent,
+		AllContactsComponent,
+		EditContactComponent,
+		AddContactComponent,
+		MessagesComponent,
+		ConfirmationDialogLayoutComponent,
+		InputTextComponent
+	],
+	entryComponents: [MessagesComponent, ConfirmationDialogLayoutComponent],
+	exports: [
+		AppComponent,
+		ContactDetailsComponent,
+		AllContactsComponent
+	],
+	imports: [
+		BrowserModule,
+		BrowserAnimationsModule,
+		RouterModule.forRoot(appRoutes),
+		MatInputModule,
+		MatFormFieldModule,
+		MatButtonModule,
+		HttpClientModule,
+		FontAwesomeModule,
+		MatDialogModule,
+		FormsModule
+	],
+	providers: [ContactService, MessageService, ConfirmationService],
+	bootstrap: [AppComponent]
 })
 export class AppModule { }

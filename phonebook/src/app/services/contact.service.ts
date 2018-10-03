@@ -6,56 +6,66 @@ import { map } from 'rxjs/operators';
 
 @Injectable()
 export class ContactService {
-    contacts: Array<Contact>;
+	contacts: Array<Contact>;
 
-    constructor(private http: HttpClient) {
-    }
+	constructor(private http: HttpClient) {
+	}
 
-    async getContact(id: number) {
-        this.contacts = await this.getContacts();
-        if (this.contacts) return this.contacts.find((contact) => { return contact.id == id; });
-        else return null;
-    }
+	async getContact(id: number) {
+		this.contacts = await this.getContacts();
+		if (this.contacts) return this.contacts.find((contact) => { return contact.id == id; });
+		else return null;
+	}
 
-    getContacts() {
-        return this.http.get("./assets/contacts.json").pipe(map(res => <Contact[]>res)).toPromise();
-    }
+	getContacts() {
+		return this.http.get("./assets/contacts.json").pipe(map(res => <Contact[]>res)).toPromise();
+	}
 
-    getAllContacts() {
-        return this.http.get("./assets/contacts.json");
-    }
+	setContacts() {
+		this.http.get("./assets/contacts.json").subscribe((results: any) => {
+			this.contacts = results;
+		});
+	}
 
-    setContacts() {
-        this.http.get("./assets/contacts.json").subscribe((results: any) => {
-            this.contacts = results;
-        });
-    }
+	findContact(name: string): Contact[] {
+		if (name === "" || name === null) return this.contacts;
 
-    async findContact(name: string) {
-        return this.contacts.find((contact) => {
-            return contact.firstName.includes(name) || contact.lastName.includes(name);
-        });
-    }
+		let searchTerms = name.toLowerCase().replace(/  +/g, ' ').split(" ");
 
-    async addContact(newContact: Contact) {
-        this.contacts = await this.getContacts();
-        if (!this.contacts) this.contacts = new Array<Contact>();
-        newContact.id = this.contacts.length;
-        this.contacts.push(newContact);
-    }
+		return this.contacts.filter((contact) => {
+			let matchCount = 0;
 
-    editContact(contact: Contact) {
-        let foundContact = this.contacts.find((contact) => contact.id === contact.id);
-        if (foundContact) {
-            foundContact.firstName = contact.firstName;
-            foundContact.lastName = contact.lastName;
-            foundContact.phoneNumber = contact.phoneNumber;
-            console.log(this.contacts);
-            console.log(foundContact)
-        }
-    }
+			searchTerms.forEach((subterm) => {
+				if (contact.firstName.toLowerCase().includes(subterm) || contact.lastName.toLowerCase().includes(subterm)) matchCount++;
+			});
 
-    deleteContact(id: number) {
+			if (matchCount === searchTerms.length) return true;
+			else return false;
+		});
+	}
 
-    }
+	async addContact(newContact: Contact) {
+		this.contacts = await this.getContacts();
+		if (!this.contacts) this.contacts = new Array<Contact>();
+		newContact.id = this.contacts.length;
+		this.contacts.push(newContact);
+	}
+
+	editContact(contact: Contact) {
+		let foundContact = this.contacts.find((contact) => contact.id === contact.id);
+		if (foundContact) {
+			foundContact.firstName = contact.firstName;
+			foundContact.lastName = contact.lastName;
+			foundContact.phoneNumber = contact.phoneNumber;
+		}
+	}
+
+	async deleteContact(id: number) {
+		if (!this.contacts) this.contacts = await this.getContacts();
+		let index = this.contacts.findIndex((contact) => contact.id === contact.id);
+
+		if (index !== -1) {
+			this.contacts = this.contacts.splice(index, 1);
+		}
+	}
 }
