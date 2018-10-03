@@ -19,10 +19,9 @@ export class AddContactComponent implements OnInit {
 	}
 
 	addContact() {
-		if (this.newContact.firstName && this.newContact.phoneNumber) this.contactsService.addContact(this.newContact).then(() => { });
+		if (this.newContact.firstName && this.newContact.phoneNumber) this.contactsService.addContact(this.newContact).then(() => { console.log("finished");})
 		else {
 			this.messageService.add({ message: "Please fill in new name and phone number" , category: "warning"});
-
 		}
 	}
 }

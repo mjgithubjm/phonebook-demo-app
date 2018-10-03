@@ -3,7 +3,7 @@
     <label>First name *:</label>
   </div>
   <div class="col-8">
-    <input *ngIf="newContact" value="{{newContact.firstName}}" />
+    <input *ngIf="newContact" [(ngModel)]="newContact.firstName" />
   </div>
 </div>
 
@@ -12,7 +12,7 @@
     <label>Last name:</label>
   </div>
   <div class="col-8">
-    <input *ngIf="newContact" value="{{newContact.lastName}}" />
+    <input *ngIf="newContact" [(ngModel)]="newContact.lastName" />
   </div>
 </div>
 
@@ -21,7 +21,7 @@
     <label>Phone number *:</label>
   </div>
   <div class="col-8">
-    <input *ngIf="newContact" value="{{newContact.phoneNumber}}" />
+    <input *ngIf="newContact" [(ngModel)]="newContact.phoneNumber" />
   </div>
 </div>
 

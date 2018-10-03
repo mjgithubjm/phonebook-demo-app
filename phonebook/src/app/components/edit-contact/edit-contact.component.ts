@@ -34,7 +34,7 @@ export class EditContactComponent implements OnInit {
 	}
 
 	delete() {
-		this.contactsService.editContact(this.selectedContact);
+		this.contactsService.editContact(this.selectedContact).then(() => { })
 	}
 
 }

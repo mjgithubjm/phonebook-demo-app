@@ -1,0 +1,26 @@
+{
+	"include": [
+		"./src/**/*"
+	],
+	"exclude": [
+		"node_modules"
+	],
+	"compilerOptions": {
+		"target": "es2017",
+		"module": "commonjs",
+		"moduleResolution": "node",
+		"lib": [
+			"es2017",
+			"dom"
+		],
+		"outDir": "./dist",
+		"allowUnreachableCode": true,
+		"strict": true,
+		"suppressImplicitAnyIndexErrors": true,
+		"strictNullChecks": false,
+		"sourceMap": true,
+		"declaration": false,
+		"preserveSymlinks": true,
+		"baseUrl": "./"
+	}
+}

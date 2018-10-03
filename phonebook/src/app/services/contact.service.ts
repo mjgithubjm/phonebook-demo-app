@@ -8,22 +8,28 @@ import { map } from 'rxjs/operators';
 export class ContactService {
 	contacts: Array<Contact>;
 
+	baseUrl: string = 'http://localhost:8000/phonebook-api';
+
+	saveUrlPath: string = 'save-contact-changes';
+
 	constructor(private http: HttpClient) {
 	}
 
 	async getContact(id: number) {
-		this.contacts = await this.getContacts();
+		let result: any = await this.getContacts();
+		if (result.success) this.contacts = result.data;
 		if (this.contacts) return this.contacts.find((contact) => { return contact.id == id; });
 		else return null;
 	}
 
 	getContacts() {
-		return this.http.get("./assets/contacts.json").pipe(map(res => <Contact[]>res)).toPromise();
+		return this.http.get('http://localhost:8000/phonebook-api/all-contacts').toPromise();
 	}
 
 	setContacts() {
-		this.http.get("./assets/contacts.json").subscribe((results: any) => {
-			this.contacts = results;
+		this.http.get('http://localhost:8000/phonebook-api/all-contacts').subscribe((result: any) => {
+			console.log(result)
+			if(result.success) this.contacts = result.data;
 		});
 	}
 
@@ -45,27 +51,34 @@ export class ContactService {
 	}
 
 	async addContact(newContact: Contact) {
-		this.contacts = await this.getContacts();
 		if (!this.contacts) this.contacts = new Array<Contact>();
-		newContact.id = this.contacts.length;
+		newContact.id = this.contacts.length + 1;
 		this.contacts.push(newContact);
+		this.http.post(this.baseUrl + '/' + this.saveUrlPath, this.contacts).subscribe((result: any) => {
+		});
 	}
 
-	editContact(contact: Contact) {
+	async editContact(contact: Contact) {
 		let foundContact = this.contacts.find((contact) => contact.id === contact.id);
 		if (foundContact) {
 			foundContact.firstName = contact.firstName;
 			foundContact.lastName = contact.lastName;
 			foundContact.phoneNumber = contact.phoneNumber;
+
+			this.http.post(this.baseUrl + '/' + this.saveUrlPath, this.contacts).subscribe((result: any) => {
+			});
 		}
 	}
 
 	async deleteContact(id: number) {
-		if (!this.contacts) this.contacts = await this.getContacts();
+		if (!this.contacts) return;
 		let index = this.contacts.findIndex((contact) => contact.id === contact.id);
 
 		if (index !== -1) {
 			this.contacts = this.contacts.splice(index, 1);
+
+			this.http.post(this.baseUrl + '/' + this.saveUrlPath, this.contacts).subscribe((result: any) => {
+			});
 		}
 	}
 }
