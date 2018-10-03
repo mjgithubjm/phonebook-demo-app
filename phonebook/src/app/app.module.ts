@@ -42,6 +42,7 @@ const appRoutes: Routes = [
 		redirectTo: '/all-contacts',
 		pathMatch: 'full'
 	}];
+
 @NgModule({
 	declarations: [
 		AppComponent,

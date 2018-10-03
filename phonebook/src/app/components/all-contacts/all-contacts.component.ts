@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ContactService } from '../../services/contact.service';
 import { Contact } from '../../model/contact';
 import { faEdit, faInfo, faTrash, faPlus } from '@fortawesome/free-solid-svg-icons';
-import { RouterModule, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { MessageService } from '../../services/message.service';
 
 @Component({
@@ -23,8 +23,7 @@ export class AllContactsComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		//TODO: remove later
-		if (!this.contacts) this.contactsService.setContacts();
+		 this.contactsService.setContacts();
 	}
 
 	editContact(contactId: number) {
