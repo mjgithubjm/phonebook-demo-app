@@ -35,7 +35,7 @@ export class ExpressApplication {
 			let dataObject: any = {};
 			if (fs.existsSync('./src/assets/contacts.json')) {
 				let data: string = fs.readFileSync('./src/assets/contacts.json', 'utf8');
-				dataObject = JSON.parse(data);
+				dataObject = this.sortContacts(JSON.parse(data));
 			} else {
 				fs.openSync('./src/assets/contacts.json', 'a');
 			}
@@ -71,12 +71,22 @@ export class ExpressApplication {
 
 	}
 
-	createUniqueId(contacts: Array<any>): number {
+	private createUniqueId(contacts: Array<any>): number {
 		let newId = Math.floor(Math.random() * 1000);
 		if (contacts.find((contact) => { return contact.id === newId })) {
 			return this.createUniqueId(contacts);
 		} else {
 			return newId;
 		}
+	}
+
+	private sortContacts(contacts: Array<any>): Array<any> {
+		return contacts.sort((a, b) => {
+			if (a.firstName < b.firstName) return -1;
+			if (a.firstName > b.firstName) return 1;
+			if (a.lastName < b.lastName) return -1;
+			if (a.lastName > b.lastName) return 1;
+			return 0;
+		})
 	}
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
-import { ConfirmationService } from '../../services/confirmation.service';
 import { MessageService } from '../../services/message.service';
 
 @Component({
@@ -10,16 +9,13 @@ import { MessageService } from '../../services/message.service';
 	styleUrls: ['./messages.component.css']
 })
 export class MessagesComponent implements OnInit {
-	constructor(private confirmationService: ConfirmationService,
-		private messageService: MessageService,
+	constructor(private messageService: MessageService,
 		private matDialog: MatDialog) {
-		this.confirmationService.confirmationRequestEvent.subscribe((options: any) => {
-			this.openDialog(options);
-		});
 		this.messageService.messageRequestEvent.subscribe((options: any) => {
 			this.openDialog(options);
 		});
 	}
+
 	ngOnInit() {
 	}
 

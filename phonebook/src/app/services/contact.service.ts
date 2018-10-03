@@ -28,7 +28,7 @@ export class ContactService {
 	setContacts() {
 		this.http.get('http://localhost:8000/phonebook-api/all-contacts').subscribe((result: any) => {
 			console.log(result)
-			if(result.success) this.contacts = result.data;
+			if (result.success) this.contacts = result.data;
 		});
 	}
 
@@ -41,7 +41,8 @@ export class ContactService {
 			let matchCount = 0;
 
 			searchTerms.forEach((subterm) => {
-				if (contact.firstName.toLowerCase().includes(subterm) || contact.lastName.toLowerCase().includes(subterm)) matchCount++;
+				if (contact.firstName.toLowerCase().includes(subterm) ||
+					(contact.lastName && contact.lastName.toLowerCase().includes(subterm))) matchCount++;
 			});
 
 			if (matchCount === searchTerms.length) return true;

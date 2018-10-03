@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { ContactDetailsComponent } from './components/contact-details/contact-details.component';
 import { AllContactsComponent } from './components/all-contacts/all-contacts.component';
@@ -15,7 +15,6 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MessageService } from './services/message.service';
-import { ConfirmationService } from './services/confirmation.service';
 import { MessagesComponent, ConfirmationDialogLayoutComponent } from './components/messages/messages.component';
 import { MatDialogModule } from '@angular/material';
 import { InputTextComponent } from './components/ui-components/input-text/input-text.component';
@@ -72,7 +71,7 @@ const appRoutes: Routes = [
 		MatDialogModule,
 		FormsModule
 	],
-	providers: [ContactService, MessageService, ConfirmationService],
+	providers: [ContactService, MessageService],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

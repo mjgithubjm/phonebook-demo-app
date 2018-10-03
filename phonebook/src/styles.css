@@ -5,6 +5,7 @@
 .pointer {
     cursor: pointer;
 }
+
 .table {
 	display: table;
 }
@@ -12,8 +13,17 @@
 .table-cell {
 	display: table-cell;
 }
-.input {
+
+.input, .input.mat-input-element {
     border-width: 1px;
     border-style: solid;
     border-color: lightblue;
+}
+
+.text-center {
+    text-align: center;
+}
+
+body {
+    background-color: #F2F8F5;
 }
