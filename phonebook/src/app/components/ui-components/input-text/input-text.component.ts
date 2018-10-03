@@ -31,11 +31,7 @@ export class InputTextComponent implements OnInit {
 
 	constructor() { }
 
-	ngOnInit() {
-	}
-
-	getMessagesFor(elementName: string) {
-		return null;
+	ngOnInit(): void {
 	}
 
 	onBlur(event: any): void {

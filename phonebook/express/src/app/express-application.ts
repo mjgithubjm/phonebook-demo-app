@@ -3,6 +3,7 @@ import * as bodyParser from 'body-parser';
 import * as cors from 'cors';
 import * as fs from 'fs';
 import * as path from 'path';
+
 export class ExpressApplication {
 	app: express.Application = express();
 

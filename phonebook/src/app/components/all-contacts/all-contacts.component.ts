@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { ContactService } from '../../services/contact.service';
-import { Contact } from '../../model/contact';
 import { faEdit, faInfo, faTrash, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
+
+import { ContactService } from '../../services/contact.service';
+import { Contact } from '../../model/contact';
 import { MessageService } from '../../services/message.service';
 
+/**
+ * Start page
+ */
 @Component({
 	selector: 'app-all-contacts',
 	templateUrl: './all-contacts.component.html',
@@ -12,25 +16,31 @@ import { MessageService } from '../../services/message.service';
 })
 export class AllContactsComponent implements OnInit {
 	name: string = "";
+
 	get contacts(): Array<Contact> { return this.contactsService.findContact(this.name); }
+
 	iconEdit = faEdit;
+
 	iconInfo = faInfo;
+
 	iconDelete = faTrash;
+
 	iconAdd = faPlus;
 
-	constructor(private contactsService: ContactService, private router: Router, private messageService: MessageService) {
+	constructor(private contactsService: ContactService, private router: Router,
+		private messageService: MessageService) {
 
 	}
 
-	ngOnInit() {
-		 this.contactsService.setContacts();
+	ngOnInit(): void {
+		this.contactsService.setContacts();
 	}
 
-	editContact(contactId: number) {
+	editContact(contactId: number): void {
 		this.router.navigate(["edit-contact", contactId]);
 	}
 
-	deleteContact(contactId: number) {
+	deleteContact(contactId: number): void {
 		this.messageService.add({
 			message: "Are you sure you want to delete this contact?",
 			category: "request",
@@ -39,15 +49,15 @@ export class AllContactsComponent implements OnInit {
 		});
 	}
 
-	delete(contactId: number): void {
+	private delete(contactId: number): void {
 		this.contactsService.deleteContact(contactId);
 	}
 
-	viewContact(contactId: number) {
+	viewContact(contactId: number): void {
 		this.router.navigate(["contact-details", contactId]);
 	}
 
-	addContact() {
+	addContact(): void {
 		this.router.navigate(["add-contact"]);
 	}
 }

@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { ContactService } from '../../services/contact.service';
 import { Contact } from '../../model/contact';
 import { MessageService } from '../../services/message.service';
-import { MatDialog } from '@angular/material/dialog';
-import { MessagesComponent } from '../messages/messages.component';
-import { Router } from '@angular/router';
 
+/**
+ * Page for adding a new contact
+ */
 @Component({
 	selector: 'app-add-contact',
 	templateUrl: './add-contact.component.html',
@@ -14,12 +16,13 @@ import { Router } from '@angular/router';
 export class AddContactComponent implements OnInit {
 	newContact: Contact = new Contact();
 
-	constructor(private contactsService: ContactService, private router: Router, private messageService: MessageService) { }
+	constructor(private contactsService: ContactService, private router: Router, 
+		private messageService: MessageService) { }
 
-	ngOnInit() {
+	ngOnInit(): void {
 	}
 
-	addContact() {
+	addContact(): void {
 		if (this.newContact.firstName && this.newContact.phoneNumber) {
 			this.contactsService.addContact(this.newContact).then(() => {
 				this.router.navigate(["all-contacts"]);

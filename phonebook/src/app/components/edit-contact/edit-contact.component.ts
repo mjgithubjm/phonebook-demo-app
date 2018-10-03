@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+
 import { ContactService } from '../../services/contact.service';
 import { Contact } from '../../model/contact';
 import { MessageService } from '../../services/message.service';
 
+/**
+ * Page to edit contact and save changes
+ */
 @Component({
 	selector: 'app-edit-contact',
 	templateUrl: './edit-contact.component.html',
@@ -11,11 +15,14 @@ import { MessageService } from '../../services/message.service';
 })
 export class EditContactComponent implements OnInit {
 	id: number;
+
 	selectedContact: Contact;
 
-	constructor(private contactsService: ContactService, private router: Router, private route: ActivatedRoute, private messageService: MessageService) { }
+	constructor(private contactsService: ContactService, private router: Router, 
+		private route: ActivatedRoute, private messageService: MessageService) { 
+		}
 
-	ngOnInit() {
+	ngOnInit(): void {
 		this.route.params.subscribe(async (params: Params) => {
 			this.id = params['id'];
 
@@ -24,7 +31,7 @@ export class EditContactComponent implements OnInit {
 		});
 	}
 
-	editContact() {
+	editContact(): void {
 		this.messageService.add({
 			message: "Do you want to save your changes?",
 			category: "request",
@@ -33,7 +40,7 @@ export class EditContactComponent implements OnInit {
 		});
 	}
 
-	edit() {
+	private edit(): void {
 		this.contactsService.editContact(this.selectedContact).then(() => {
 			this.router.navigate(["all-contacts"]);
 		});
