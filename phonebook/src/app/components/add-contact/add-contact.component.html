@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-4">
+    <label>First name:</label>
+  </div>
+  <div class="col-8">
+    <input *ngIf="newContact" value="{{newContact.firstName}}" />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-4">
+    <label>Last name:</label>
+  </div>
+  <div class="col-8">
+    <input *ngIf="newContact" value="{{newContact.lastName}}" />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-4">
+    <label>Phone number:</label>
+  </div>
+  <div class="col-8">
+    <input *ngIf="newContact" value="{{newContact.phoneNumber}}" />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-4">
+    <button mat-button (click)="addContact()">Add new contact</button>
+  </div>
+</div>

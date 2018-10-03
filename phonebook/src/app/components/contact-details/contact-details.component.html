@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-4">
+    <label>First name:</label>
+   
+        <input matInput disabled *ngIf="selectedContact" value="{{selectedContact.firstName}}" />
+
+  </div>
+</div>
+<div class="row">
+  <div class="col-4">
+    <label>Last name:</label>
+    <input matInput disabled *ngIf="selectedContact" value="{{selectedContact.lastName}}" />
+  </div>
+</div>
+<div class="row">
+  <div class="col-4">
+    <label>Phone number:</label>
+    <input matInput disabled *ngIf="selectedContact" value="{{selectedContact.phoneNumber}}" />
+  </div>
+</div>

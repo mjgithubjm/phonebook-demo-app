@@ -1,0 +1,25 @@
+<div class="container">
+  <div>List of contacts:</div>
+  <div class="row">
+    <input class="col-6" matInput placeholder="Enter contact name" value="{{name}}">
+    <div class="col-1 pointer" (click)="addContact()">
+      <fa-icon [icon]="iconAdd"></fa-icon>
+    </div>
+  </div>
+  <li *ngFor="let contact of contacts">
+    <div class="row">
+      <span class="col-3">{{contact.firstName}}</span>
+      <span class="col-3">{{contact.lastName}}</span>
+      <span class="col-3">{{contact.phoneNumber}}</span>
+      <div class="col-1 pointer" (click)="viewContact(contact.id)">
+        <fa-icon [icon]="iconInfo"></fa-icon>
+      </div>
+      <div class="col-1 pointer" (click)="editContact(contact.id)">
+        <fa-icon [icon]="iconEdit"></fa-icon>
+      </div>
+      <div class="col-1 pointer" (click)="deleteContact(contact.id)">
+        <fa-icon [icon]="iconDelete"></fa-icon>
+      </div>
+    </div>
+  </li>
+</div>
