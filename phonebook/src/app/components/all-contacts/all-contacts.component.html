@@ -15,16 +15,16 @@
 		</li>
 
 		<li *ngFor="let contact of contacts" class="row list-item">
-			<span class="col-3">{{contact.firstName}}</span>
-			<span class="col-3">{{contact.lastName}}</span>
-			<span class="col-3">{{contact.phoneNumber}}</span>
-			<div class="col-1 pointer" (click)="viewContact(contact.id)">
+			<span class="col-sm-12 col-md-3 col-lg-3">{{contact.firstName}}</span>
+			<span class="col-sm-12 col-md-3 col-lg-3">{{contact.lastName}}</span>
+			<span class="col-sm-12 col-md-3 col-lg-3">{{contact.phoneNumber}}</span>
+			<div class="col-sm-3 col-md-1 col-lg-1 pointer" (click)="viewContact(contact.id)">
 				<fa-icon [icon]="iconInfo"></fa-icon>
 			</div>
-			<div class="col-1 pointer" (click)="editContact(contact.id)">
+			<div class="col-sm-3 col-md-1 col-lg-1 pointer" (click)="editContact(contact.id)">
 				<fa-icon [icon]="iconEdit"></fa-icon>
 			</div>
-			<div class="col-1 pointer" (click)="deleteContact(contact.id)">
+			<div class="col-sm-3 col-md-1 col-lg-1 pointer" (click)="deleteContact(contact.id)">
 				<fa-icon [icon]="iconDelete"></fa-icon>
 			</div>
 		</li>
