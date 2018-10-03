@@ -46,6 +46,7 @@ export class ExpressApplication {
 		router.route('/save-contact-changes').post((request, response) => {
 			try {
 				let dataObject: any = request.body;
+				this.setId(dataObject);
 				let data = JSON.stringify(dataObject);
 				fs.writeFileSync('./src/assets/contacts.json', data);
 				response.send({ success: true });
@@ -55,5 +56,26 @@ export class ExpressApplication {
 		});
 
 		return router;
+	}
+
+	private setId(contacts: Array<any>) {
+		let contactsWithoutId: Array<any> = contacts.filter((contact: any) => {
+			if (contact.id === null || contact.id === undefined) return true;
+			else return false;});
+		if (contactsWithoutId.length > 0) {
+			contactsWithoutId.forEach((contact) => {
+				contact.id = this.createUniqueId(contacts);
+			})
+		}
+
+	}
+
+	createUniqueId(contacts: Array<any>): number {
+		let newId = Math.floor(Math.random() * 1000);
+		if (contacts.find((contact) => { return contact.id === newId })) {
+			return this.createUniqueId(contacts);
+		} else {
+			return newId;
+		}
 	}
 }

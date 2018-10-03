@@ -35,8 +35,7 @@ const appRoutes: Routes = [
 	},
 	{
 		path: 'all-contacts',
-		component: AllContactsComponent,
-		data: { title: 'Heroes List' }
+		component: AllContactsComponent
 	},
 	{
 		path: '',

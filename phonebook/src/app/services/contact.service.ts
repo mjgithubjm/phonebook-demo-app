@@ -52,7 +52,6 @@ export class ContactService {
 
 	async addContact(newContact: Contact) {
 		if (!this.contacts) this.contacts = new Array<Contact>();
-		newContact.id = this.contacts.length + 1;
 		this.contacts.push(newContact);
 		this.http.post(this.baseUrl + '/' + this.saveUrlPath, this.contacts).subscribe((result: any) => {
 		});
