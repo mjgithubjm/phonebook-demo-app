@@ -57,12 +57,12 @@ export class ContactService {
 		});
 	}
 
-	async editContact(contact: Contact) {
-		let foundContact = this.contacts.find((contact) => contact.id === contact.id);
+	async editContact(editedContact: Contact) {
+		let foundContact = this.contacts.find((contact) => contact.id === editedContact.id);
 		if (foundContact) {
-			foundContact.firstName = contact.firstName;
-			foundContact.lastName = contact.lastName;
-			foundContact.phoneNumber = contact.phoneNumber;
+			foundContact.firstName = editedContact.firstName;
+			foundContact.lastName = editedContact.lastName;
+			foundContact.phoneNumber = editedContact.phoneNumber;
 
 			this.http.post(this.baseUrl + '/' + this.saveUrlPath, this.contacts).subscribe((result: any) => {
 			});

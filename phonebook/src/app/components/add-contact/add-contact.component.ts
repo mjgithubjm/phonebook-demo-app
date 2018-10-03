@@ -22,7 +22,7 @@ export class AddContactComponent implements OnInit {
 	addContact() {
 		if (this.newContact.firstName && this.newContact.phoneNumber) {
 			this.contactsService.addContact(this.newContact).then(() => {
-				this.router.navigate(["all-contacts"])
+				this.router.navigate(["all-contacts"]);
 			})
 		}
 		else {

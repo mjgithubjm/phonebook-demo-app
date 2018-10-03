@@ -61,7 +61,8 @@ export class ExpressApplication {
 	private setId(contacts: Array<any>) {
 		let contactsWithoutId: Array<any> = contacts.filter((contact: any) => {
 			if (contact.id === null || contact.id === undefined) return true;
-			else return false;});
+			else return false;
+		});
 		if (contactsWithoutId.length > 0) {
 			contactsWithoutId.forEach((contact) => {
 				contact.id = this.createUniqueId(contacts);
