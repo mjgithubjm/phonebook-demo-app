@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { faPhone } from '@fortawesome/free-solid-svg-icons';
 
 import { Contact } from '../../model/contact';
 import { ContactService } from '../../services/contact.service';
@@ -16,6 +17,8 @@ export class ContactDetailsComponent implements OnInit {
   id: number;
 
   selectedContact: Contact;
+
+  iconPhone = faPhone;
 
   constructor(private contactsService: ContactService, private route: ActivatedRoute) {
   }
