@@ -1,8 +1,7 @@
-import { Contact } from "../model/contact";
 import { HttpClient } from '@angular/common/http';
-import { Observable } from "rxjs";
 import { Injectable } from "@angular/core";
-import { map } from 'rxjs/operators';
+
+import { Contact } from "../model/contact";
 
 @Injectable()
 export class ContactService {
@@ -71,11 +70,11 @@ export class ContactService {
 
 	async deleteContact(id: number) {
 		if (!this.contacts) return;
-		let index = this.contacts.findIndex((contact) => contact.id === contact.id);
+
+		let index = this.contacts.findIndex((contact) => contact.id === id);
 
 		if (index !== -1) {
-			this.contacts = this.contacts.splice(index, 1);
-
+			this.contacts.splice(index, 1);
 			this.http.post(this.baseUrl + '/' + this.saveUrlPath, this.contacts).subscribe((result: any) => {
 			});
 		}
