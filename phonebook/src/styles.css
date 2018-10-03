@@ -1,6 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+
 .pointer {
     cursor: pointer;
+}
+.table {
+	display: table;
+}
+
+.table-cell {
+	display: table-cell;
+}
+.input {
+    border-width: 1px;
+    border-style: solid;
+    border-color: lightblue;
 }

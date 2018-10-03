@@ -1,8 +1,5 @@
 <mat-form-field [attr.data-required]="isRequired" appearance="standard" hideRequiredMarker="true" [hintLabel]="hint">
-	<mat-label [attr.data-required]="isRequired">{{label}}</mat-label>
+	<mat-label *ngIf="label" [attr.data-required]="isRequired">{{label}}</mat-label>
 	<input matInput [required]="isRequired" [(ngModel)]="name" (blur)="onBlur($event)" (focus)="onFocus($event)" [placeholder]="placeholder"
-	 [errorStateMatcher]="errorStateMatcher" (keyup)="onKeyUp()">
-	<mat-error *ngFor="let message of getMessagesFor('searchInput')">
-		{{ message }}
-	</mat-error>
+	 [errorStateMatcher]="errorStateMatcher" (keyup)="onKeyUp()" [disabled]="disabled">
 </mat-form-field>

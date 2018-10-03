@@ -14,6 +14,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class InputTextComponent implements OnInit {
 	@Input() name: string = "";
+
 	@Input() isRequired: boolean = false;
 
 	@Input() hint: string = "";
@@ -21,6 +22,9 @@ export class InputTextComponent implements OnInit {
 	@Input() label: string = "";
 
 	@Input() placeholder: string = "";
+
+	@Input() disabled: boolean = false;
+
 	@Output() nameChange: EventEmitter<string> = new EventEmitter<string>();
 
 	errorStateMatcher: ErrorStateMatcher = new MyErrorStateMatcher();

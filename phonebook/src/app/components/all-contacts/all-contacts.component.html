@@ -16,7 +16,6 @@
 	</li>
 
 	<li *ngFor="let contact of contacts" class="row">
-		<!-- <div class="row"> -->
 		<span class="col-3">{{contact.firstName}}</span>
 		<span class="col-3">{{contact.lastName}}</span>
 		<span class="col-3">{{contact.phoneNumber}}</span>
@@ -29,6 +28,5 @@
 		<div class="col-1 pointer" (click)="deleteContact(contact.id)">
 			<fa-icon [icon]="iconDelete"></fa-icon>
 		</div>
-		<!-- </div> -->
 	</li>
 </div>

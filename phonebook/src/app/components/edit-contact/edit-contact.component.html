@@ -3,9 +3,7 @@
     <label>First name:</label>
   </div>
   <div class="col-8">
-    <!-- <mat-form-field> -->
-      <input matInput *ngIf="selectedContact" [(ngModel)]="selectedContact.firstName" class="input" />
-    <!-- </mat-form-field> -->
+    <input matInput *ngIf="selectedContact" [(ngModel)]="selectedContact.firstName" class="input" />
   </div>
 </div>
 
@@ -14,9 +12,7 @@
     <label>Last name:</label>
   </div>
   <div class="col-8">
-    <!-- <mat-form-field> -->
-      <input *ngIf="selectedContact" matInput [(ngModel)]="selectedContact.lastName" class="input" />
-    <!-- </mat-form-field> -->
+    <input *ngIf="selectedContact" matInput [(ngModel)]="selectedContact.lastName" class="input" />
   </div>
 </div>
 
@@ -25,9 +21,7 @@
     <label>Phone number:</label>
   </div>
   <div class="col-8">
-    <!-- <mat-form-field> -->
-      <input *ngIf="selectedContact" matInput [(ngModel)]="selectedContact.phoneNumber" class="input" />
-    <!-- </mat-form-field> -->
+    <input *ngIf="selectedContact" matInput [(ngModel)]="selectedContact.phoneNumber" class="input" />
   </div>
 </div>
 
