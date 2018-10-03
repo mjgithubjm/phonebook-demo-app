@@ -5,3 +5,11 @@
 .ng-fa-icon {
     padding-left: 15px;
 }
+
+ul {
+    padding: 0px;
+}
+
+ul > li.list-item:nth-of-type(even) {
+    background-color: #e9e9f9 ;
+}

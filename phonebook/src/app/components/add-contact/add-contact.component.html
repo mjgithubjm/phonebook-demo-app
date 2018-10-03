@@ -2,8 +2,8 @@
   <div class="col-4">
     <label>First name *:</label>
   </div>
-  <div class="col-8">
-    <input *ngIf="newContact" [(ngModel)]="newContact.firstName" />
+  <div class="col-4">
+    <input *ngIf="newContact" matInput [(ngModel)]="newContact.firstName" class="input"/>
   </div>
 </div>
 
@@ -11,8 +11,8 @@
   <div class="col-4">
     <label>Last name:</label>
   </div>
-  <div class="col-8">
-    <input *ngIf="newContact" [(ngModel)]="newContact.lastName" />
+  <div class="col-4">
+    <input *ngIf="newContact" matInput [(ngModel)]="newContact.lastName" class="input"/>
   </div>
 </div>
 
@@ -20,8 +20,8 @@
   <div class="col-4">
     <label>Phone number *:</label>
   </div>
-  <div class="col-8">
-    <input *ngIf="newContact" [(ngModel)]="newContact.phoneNumber" />
+  <div class="col-4">
+    <input *ngIf="newContact" matInput [(ngModel)]="newContact.phoneNumber" class="input"/>
   </div>
 </div>
 

@@ -8,25 +8,26 @@
 			</div>
 		</div>
 	</div>
+	<ul>
+		<li class="row">
+			<span class="col-3 table-header">First name</span>
+			<span class="col-3 table-header">Last name</span>
+			<span class="col-3 table-header">Phone number</span>
+		</li>
 
-	<li class="row">
-		<span class="col-3">First name</span>
-		<span class="col-3">Last name</span>
-		<span class="col-3">Phone number</span>
-	</li>
-
-	<li *ngFor="let contact of contacts" class="row">
-		<span class="col-3">{{contact.firstName}}</span>
-		<span class="col-3">{{contact.lastName}}</span>
-		<span class="col-3">{{contact.phoneNumber}}</span>
-		<div class="col-1 pointer" (click)="viewContact(contact.id)">
-			<fa-icon [icon]="iconInfo"></fa-icon>
-		</div>
-		<div class="col-1 pointer" (click)="editContact(contact.id)">
-			<fa-icon [icon]="iconEdit"></fa-icon>
-		</div>
-		<div class="col-1 pointer" (click)="deleteContact(contact.id)">
-			<fa-icon [icon]="iconDelete"></fa-icon>
-		</div>
-	</li>
+		<li *ngFor="let contact of contacts" class="row list-item">
+			<span class="col-3">{{contact.firstName}}</span>
+			<span class="col-3">{{contact.lastName}}</span>
+			<span class="col-3">{{contact.phoneNumber}}</span>
+			<div class="col-1 pointer" (click)="viewContact(contact.id)">
+				<fa-icon [icon]="iconInfo"></fa-icon>
+			</div>
+			<div class="col-1 pointer" (click)="editContact(contact.id)">
+				<fa-icon [icon]="iconEdit"></fa-icon>
+			</div>
+			<div class="col-1 pointer" (click)="deleteContact(contact.id)">
+				<fa-icon [icon]="iconDelete"></fa-icon>
+			</div>
+		</li>
+	</ul>
 </div>

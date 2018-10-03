@@ -29,7 +29,7 @@ export class AddContactComponent implements OnInit {
 			})
 		}
 		else {
-			this.messageService.add({ message: "Please fill in new name and phone number" , category: "warning"});
+			this.messageService.add({ message: "Please fill in first name and phone number" , category: "warning"});
 		}
 	}
 }

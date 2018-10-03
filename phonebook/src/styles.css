@@ -14,7 +14,7 @@
 	display: table-cell;
 }
 
-.input, .input.mat-input-element {
+.input.mat-input-element {
     border-width: 1px;
     border-style: solid;
     border-color: lightblue;
@@ -32,6 +32,21 @@
     width: 100%;
 }
 
+.table-header {
+    padding-bottom: 15px;
+    font-weight: bold;
+    color: #2A4F8A;
+}
+
+.list-item {
+    padding-bottom: 10px;
+}
+
 body {
     background-color: #F2F8F5;
+}
+
+h1 {
+    padding-bottom: 20px;
+    padding-top: 20px;
 }

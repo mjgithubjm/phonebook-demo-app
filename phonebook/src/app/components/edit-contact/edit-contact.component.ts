@@ -18,9 +18,9 @@ export class EditContactComponent implements OnInit {
 
 	selectedContact: Contact;
 
-	constructor(private contactsService: ContactService, private router: Router, 
-		private route: ActivatedRoute, private messageService: MessageService) { 
-		}
+	constructor(private contactsService: ContactService, private router: Router,
+		private route: ActivatedRoute, private messageService: MessageService) {
+	}
 
 	ngOnInit(): void {
 		this.route.params.subscribe(async (params: Params) => {
@@ -32,12 +32,17 @@ export class EditContactComponent implements OnInit {
 	}
 
 	editContact(): void {
-		this.messageService.add({
-			message: "Do you want to save your changes?",
-			category: "request",
-			acceptFunction: (() => { this.edit(); }),
-			rejectFunction: (() => { })
-		});
+		if (this.selectedContact.firstName && this.selectedContact.phoneNumber) {
+			this.messageService.add({
+				message: "Do you want to save your changes?",
+				category: "request",
+				acceptFunction: (() => { this.edit(); }),
+				rejectFunction: (() => { })
+			});
+		}
+		else {
+			this.messageService.add({ message: "Please fill in first name and phone number", category: "warning" });
+		}
 	}
 
 	private edit(): void {
